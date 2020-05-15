@@ -40,9 +40,10 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(
-    "mongodb+srv://alshafi834:158893SDnm_)@cluster0-asrk4.gcp.mongodb.net/mernboilerplate?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     app.listen(5000);
   })
